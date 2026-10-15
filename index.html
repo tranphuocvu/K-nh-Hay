@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kênh yêu thích</title>
+<meta name="theme-color" content="#0B1B2B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kênh yêu thích">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B1B2B;--card:#12283D;--ink:#CFE3FF;--mut:#8FA9C7;--line:#23405B;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--navy:#0B1B2B;--dng:#F5B941;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1B2B;--card:#12283D;--ink:#CFE3FF;--mut:#8FA9C7;--line:#23405B;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--dng:#F5B941;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B1B2B;--card:#12283D;--ink:#CFE3FF;--mut:#8FA9C7;--line:#23405B;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--dng:#F5B941;color-scheme:dark}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 "Be Vietnam Pro",system-ui,sans-serif}
+#app{height:100%;max-width:480px;margin:0 auto;display:flex;flex-direction:column}
+main{flex:1;overflow-y:auto;padding:28px 20px 16px;display:flex;flex-direction:column;gap:12px}
+h1,h2{margin:0;font-weight:800;letter-spacing:-.02em;line-height:1.12}
+h1{font-size:32px}h2{font-size:28px}
+.hi{font-size:14px;font-weight:600;color:var(--atx);margin-bottom:-6px}
+.sub{font-size:14px;color:var(--mut)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;text-align:left;color:var(--ink);font:inherit;cursor:pointer;transition:transform .12s,border-color .12s}
+button.card:active{transform:scale(.98)}
+.card.add{background:transparent;border-style:dashed;justify-content:center;color:var(--mut);font-weight:600}
+.disc{width:48px;height:48px;border-radius:16px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;flex:none}
+.av{width:46px;height:46px;border-radius:50%;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex:none}
+.grow{flex:1;min-width:0}.t{font-weight:600;font-size:16px}.m{font-size:13px;color:var(--mut)}
+.chev{color:var(--mut);flex:none}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle}
+.tag i{width:7px;height:7px;border-radius:50%}
+.head{display:flex;align-items:center;gap:14px}
+.bar{width:6px;align-self:stretch;border-radius:3px;flex:none}
+.btn{min-height:54px;border:0;border-radius:18px;background:var(--gold);color:var(--onacc);font:700 16px "Be Vietnam Pro",sans-serif;cursor:pointer;padding:0 18px;transition:transform .12s}
+.btn:active{transform:scale(.98)}
+.danger{background:transparent;color:var(--dng);border:1px solid var(--line);font-weight:600}
+.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:40px;padding:0 16px;border-radius:20px;border:1px solid var(--line);background:transparent;color:var(--ink);font:500 14px "Be Vietnam Pro",sans-serif;cursor:pointer}
+.chip.on{background:var(--gold);border-color:var(--gold);color:var(--onacc);font-weight:700}
+label{display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:500;color:var(--mut)}
+input{height:54px;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);padding:0 16px;font:16px "Be Vietnam Pro",sans-serif}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+nav{display:flex;gap:6px;padding:6px;margin:4px 16px 12px;background:var(--card);border:1px solid var(--line);border-radius:30px}
+nav button{flex:1;min-height:48px;border-radius:24px;border:0;background:transparent;color:var(--ink);font:600 14px "Be Vietnam Pro",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+nav button.h{background:var(--gold);color:var(--onacc)}
+nav button:active{transform:scale(.96)}
+nav button:disabled{opacity:.5}
+#toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:14px;font-weight:600;font-size:14px;display:none}
+.sp{flex:1}
+@media (hover:hover){.card,.btn,.chip,nav button{transition:transform .12s,border-color .15s,background .15s}button.card:hover{background:#1B3A58;border-color:var(--gold)}.card.add:hover{background:#12283D;color:var(--gold);border-color:var(--gold)}.btn:hover{background:#FFCB66}.danger:hover,.ghost:hover{background:#12283D;border-color:var(--gold)}.chip:hover{border-color:var(--gold);background:#12283D}.chip.on:hover{background:#FFCB66}nav button:hover{background:#1B3A58;color:var(--gold)}nav button.h:hover{background:#FFCB66}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app"><main id="main"></main>
+<nav><button id="bBack" onclick="back()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Back</button><button class="h" onclick="home()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</button><button id="bNext" onclick="next()">Next<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></nav></div>
+<div id="toast" role="status"></div>
+<script>
+var COL=["#F5B941","#F5B941","#F5B941","#F5B941","#F5B941"];
+var KEY="kenh-yeu-thich-v1",L=null;
+try{L=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){L=null}
+if(!Array.isArray(L))L=[{id:1,name:"Nghe nhạc",col:COL[0],ch:[]},{id:2,name:"Học AI",col:COL[0],ch:[]}];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(L))}catch(e){toast("Không lưu được dữ liệu")}}
+var hist=[{s:"home"}],idx=0,nid=Date.now();
+var $=function(i){return document.getElementById(i)};
+var esc=function(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})};
+function plat(u){u=u.toLowerCase();var P=[[/youtube\.com|youtu\.be/,"YouTube","#D92D20"],[/tiktok\.com/,"TikTok","#3A3A3A"],[/facebook\.com|fb\.com|fb\.watch/,"Facebook","#1877F2"],[/instagram\.com/,"Instagram","#C13584"],[/zalo\.me/,"Zalo","#0068FF"],[/threads\.net/,"Threads","#555555"]];
+for(var i=0;i<P.length;i++)if(P[i][0].test(u))return{n:P[i][1],c:P[i][2]};return{n:"Khác",c:"#5B6070"}}
+function nameFrom(u){var m=u.match(/@([\w.\-]+)/);if(m)return m[1];var p=u.replace(/\/+$/,"").split("/").pop();return p&&p.indexOf(".")<0?p:""}
+function fix(u){return /^https?:\/\//i.test(u)?u:"https://"+u}
+function gl(id){return L.filter(function(l){return l.id==id})[0]}
+function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";setTimeout(function(){e.style.display="none"},1800)}
+function go(s,p){p=p||{};p.s=s;hist=hist.slice(0,idx+1);hist.push(p);idx++;render()}
+function back(){if(idx>0){idx--;render()}}
+function next(){if(idx<hist.length-1){idx++;render()}}
+function home(){hist=[{s:"home"}];idx=0;render()}
+function av(n,c){return '<div class="av" style="background:#F5B941">'+esc((n||"?").charAt(0).toUpperCase())+'</div>'}
+function tg(q,m){return '<span class="tag"'+(m?' style="margin:0"':'')+'><i style="background:#F5B941"></i>'+q.n+'</span>'}
+var CH='<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+var S={
+home:function(){var h='<div class="hi">Chào bạn</div><h1>Hôm nay học gì nào?</h1><div class="sub" style="margin-bottom:6px">Chọn một danh sách để bắt đầu</div>';
+L.forEach(function(l){h+='<button class="card" onclick="go(\'list\',{id:'+l.id+'})"><div class="disc" style="background:'+l.col+'">'+l.ch.length+'</div><div class="grow"><div class="t">'+esc(l.name)+'</div><div class="m">'+l.ch.length+' kênh</div></div>'+CH+'</button>'});
+return h+'<button class="card add" onclick="go(\'newlist\')">+ Danh sách mới</button><button class="card add" onclick="go(\'backup\')">Sao lưu và khôi phục</button>'},
+newlist:function(){return '<h2>Danh sách mới</h2><div class="sub">Đặt tên dễ nhớ nhé</div><label>Tên danh sách<input id="ln" placeholder="Ví dụ: Nấu ăn"></label><div class="sp"></div><button class="btn" onclick="saveList()">Tạo danh sách</button>'},
+list:function(p){var l=gl(p.id),f=p.f||"Tất cả",ps=["Tất cả"];
+l.ch.forEach(function(c){var n=plat(c.url).n;if(ps.indexOf(n)<0)ps.push(n)});
+var h='<div class="head"><div class="bar" style="background:'+l.col+'"></div><div><h2>'+esc(l.name)+'</h2><div class="sub">'+l.ch.length+' kênh</div></div></div>';
+if(ps.length>2){h+='<div class="chips">';ps.forEach(function(n){h+='<button class="chip'+(n==f?' on':'')+'" onclick="hist[idx].f=\''+n+'\';render()">'+n+'</button>'});h+='</div>'}
+var shown=l.ch.filter(function(c){return f=="Tất cả"||plat(c.url).n==f});
+if(!shown.length)h+='<div class="m">Chưa có kênh nào. Thêm kênh đầu tiên nhé!</div>';
+shown.forEach(function(c){var q=plat(c.url);h+='<button class="card" onclick="go(\'ch\',{lid:'+l.id+',id:'+c.id+'})">'+av(c.name,q.c)+'<div class="grow"><div class="t">'+esc(c.name)+tg(q)+'</div><div class="m">'+esc(c.note||"Chưa có ghi chú")+'</div></div>'+CH+'</button>'});
+return h+'<div class="sp"></div><button class="btn" onclick="go(\'add\',{lid:'+l.id+'})">+ Thêm kênh</button><button class="btn ghost" onclick="go(\'rename\',{id:'+l.id+'})">Đổi tên danh sách</button><button class="btn danger" onclick="delList('+l.id+')">Xóa danh sách này</button>'},
+ch:function(p){var l=gl(p.lid),c=l.ch.filter(function(x){return x.id==p.id})[0],q=plat(c.url);
+return '<div class="head">'+av(c.name,q.c)+'<div><h2>'+esc(c.name)+'</h2>'+tg(q,1)+'</div></div><div class="card" style="display:block"><div class="m">Link</div><div style="word-break:break-all">'+esc(c.url)+'</div></div><div class="card" style="display:block"><div class="m">Ghi chú</div><div>'+esc(c.note||"Chưa có")+'</div></div><div class="m">Trong danh sách: '+esc(l.name)+'</div><div class="sp"></div><a class="btn" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="'+esc(fix(c.url))+'" target="_blank" rel="noopener">Mở kênh</a><button class="btn danger" onclick="delCh('+l.id+','+c.id+')">Xóa kênh</button>'},
+backup:function(){return '<h2>Sao lưu</h2><div class="sub">Dữ liệu đang lưu ngay trên máy này. Hãy sao lưu thường xuyên để không mất khi đổi máy hoặc xóa dữ liệu trình duyệt.</div><div class="sp"></div><button class="btn" onclick="exportData()">Tải file sao lưu</button><label class="btn ghost" style="display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);font-size:16px">Khôi phục từ file<input type="file" accept=".json,application/json" style="display:none" onchange="importData(this)"></label>'},
+rename:function(p){var l=gl(p.id);return '<h2>Đổi tên danh sách</h2><label>Tên mới<input id="rn" value="'+esc(l.name)+'"></label><div class="sp"></div><button class="btn" onclick="saveRename('+l.id+')">Lưu tên</button>'},
+add:function(p){return '<h2>Thêm kênh</h2><div class="sub">YouTube, TikTok, Facebook...</div><label>Dán link kênh<input id="u" placeholder="https://youtube.com/@..." inputmode="url"></label><label>Tên hiển thị<input id="n" placeholder="Tự lấy từ link nếu có @tên"></label><label>Ghi chú (không bắt buộc)<input id="t"></label><div class="sp"></div><button class="btn" onclick="saveCh('+p.lid+')">Lưu kênh</button>'}};
+function render(){var s=hist[idx];$("main").innerHTML=S[s.s](s);$("main").scrollTop=0;$("bBack").disabled=idx==0;$("bNext").disabled=idx>=hist.length-1}
+function saveRename(id){var n=$("rn").value.trim();if(!n){toast("Nhập tên danh sách");return}gl(id).name=n;save();hist.pop();idx--;toast("Đã đổi tên");render()}
+function exportData(){var b=new Blob([JSON.stringify({app:"kenh-yeu-thich",v:1,lists:L},null,1)],{type:"application/json"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="kenh-yeu-thich-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();a.remove();toast("Đã tạo file sao lưu")}
+function importData(el){var f=el.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!d||d.app!=="kenh-yeu-thich"||!Array.isArray(d.lists))throw 0;if(!confirm("Thay toàn bộ dữ liệu hiện tại bằng file này?"))return;L=d.lists.map(function(l){return{id:+l.id||++nid,name:String(l.name||"Danh sách"),col:COL[0],ch:(Array.isArray(l.ch)?l.ch:[]).map(function(c){return{id:+c.id||++nid,name:String(c.name||""),url:String(c.url||""),note:String(c.note||"")}})}});save();home();toast("Đã khôi phục")}catch(e){toast("File không hợp lệ")}};r.readAsText(f)}
+function saveList(){var n=$("ln").value.trim();if(!n){toast("Nhập tên danh sách");return}L.push({id:++nid,name:n,col:COL[0],ch:[]});save();hist.pop();idx--;toast("Đã tạo danh sách");render()}
+function saveCh(lid){var u=$("u").value.trim(),n=$("n").value.trim()||nameFrom(u);if(!u){toast("Nhập link kênh");return}if(!n){toast("Nhập tên hiển thị");return}
+gl(lid).ch.push({id:++nid,name:n,url:u,note:$("t").value.trim()});save();hist.pop();idx--;toast("Đã lưu kênh");render()}
+function delList(id){if(!confirm("Xóa danh sách này và các kênh trong đó?"))return;L=L.filter(function(l){return l.id!=id});save();home();toast("Đã xóa danh sách")}
+function delCh(lid,id){if(!confirm("Xóa kênh này?"))return;var l=gl(lid);l.ch=l.ch.filter(function(c){return c.id!=id});save();hist.pop();idx--;toast("Đã xóa kênh");render()}
+render();
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+</script>
+</body>
+</html>
