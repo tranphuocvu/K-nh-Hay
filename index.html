@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kênh yêu thích</title>
-<meta name="theme-color" content="#0B1B2B">
+<meta name="theme-color" content="#10263B">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -14,9 +14,9 @@
 <link rel="icon" href="icon-192.png">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0B1B2B;--card:#12283D;--ink:#CFE3FF;--mut:#8FA9C7;--line:#23405B;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--navy:#0B1B2B;--dng:#F5B941;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1B2B;--card:#12283D;--ink:#CFE3FF;--mut:#8FA9C7;--line:#23405B;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--dng:#F5B941;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0B1B2B;--card:#12283D;--ink:#CFE3FF;--mut:#8FA9C7;--line:#23405B;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--dng:#F5B941;color-scheme:dark}
+:root{--bg:#10263B;--card:#1B3A57;--ink:#E6F0FF;--mut:#B4C9E0;--line:#365C80;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--navy:#10263B;--dng:#F5B941;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10263B;--card:#1B3A57;--ink:#E6F0FF;--mut:#B4C9E0;--line:#365C80;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--dng:#F5B941;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10263B;--card:#1B3A57;--ink:#E6F0FF;--mut:#B4C9E0;--line:#365C80;--gold:#F5B941;--onacc:#000;--atx:#F5B941;--dng:#F5B941;color-scheme:dark}
 html,body{height:100%;margin:0}
 body{background:var(--bg);color:var(--ink);font:15px/1.45 "Be Vietnam Pro",system-ui,sans-serif}
 #app{height:100%;max-width:480px;margin:0 auto;display:flex;flex-direction:column}
@@ -27,10 +27,10 @@ h1{font-size:32px}h2{font-size:28px}
 .sub{font-size:14px;color:var(--mut)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;display:flex;align-items:center;gap:14px;width:100%;box-sizing:border-box;text-align:left;color:var(--ink);font:inherit;cursor:pointer;transition:transform .12s,border-color .12s}
 button.card:active{transform:scale(.98)}
-.card.add{background:transparent;border-style:dashed;justify-content:center;color:var(--mut);font-weight:600}
+.card.add{background:transparent;border-style:dashed;justify-content:center;color:#fff;font-size:17px;font-weight:600}
 .disc{width:48px;height:48px;border-radius:16px;color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;flex:none}
 .av{width:46px;height:46px;border-radius:50%;color:#000;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex:none}
-.grow{flex:1;min-width:0}.t{font-weight:600;font-size:16px}.m{font-size:13px;color:var(--mut)}
+.grow{flex:1;min-width:0}.t{font-weight:700;font-size:19px;color:#fff}.m{font-size:13px;color:var(--mut)}
 .chev{color:var(--mut);flex:none}
 .tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:500;color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:1px 8px;margin-left:8px;vertical-align:middle}
 .tag i{width:7px;height:7px;border-radius:50%}
@@ -50,10 +50,10 @@ nav{display:flex;gap:6px;padding:6px;margin:4px 16px 12px;background:var(--card)
 nav button{flex:1;min-height:48px;border-radius:24px;border:0;background:transparent;color:var(--ink);font:600 14px "Be Vietnam Pro",sans-serif;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 nav button.h{background:var(--gold);color:var(--onacc)}
 nav button:active{transform:scale(.96)}
-nav button:disabled{opacity:.5}
+nav button:disabled{opacity:.75}
 #toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:14px;font-weight:600;font-size:14px;display:none}
 .sp{flex:1}
-@media (hover:hover){.card,.btn,.chip,nav button{transition:transform .12s,border-color .15s,background .15s}button.card:hover{background:#1B3A58;border-color:var(--gold)}.card.add:hover{background:#12283D;color:var(--gold);border-color:var(--gold)}.btn:hover{background:#FFCB66}.danger:hover,.ghost:hover{background:#12283D;border-color:var(--gold)}.chip:hover{border-color:var(--gold);background:#12283D}.chip.on:hover{background:#FFCB66}nav button:hover{background:#1B3A58;color:var(--gold)}nav button.h:hover{background:#FFCB66}}
+@media (hover:hover){.card,.btn,.chip,nav button{transition:transform .12s,border-color .15s,background .15s}button.card:hover{background:#27506F;border-color:var(--gold)}.card.add:hover{background:#1B3A57;color:var(--gold);border-color:var(--gold)}.btn:hover{background:#FFCB66}.danger:hover,.ghost:hover{background:#1B3A57;border-color:var(--gold)}.chip:hover{border-color:var(--gold);background:#1B3A57}.chip.on:hover{background:#FFCB66}nav button:hover{background:#27506F;color:var(--gold)}nav button.h:hover{background:#FFCB66}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -84,8 +84,8 @@ function av(n,c){return '<div class="av" style="background:#F5B941">'+esc((n||"?
 function tg(q,m){return '<span class="tag"'+(m?' style="margin:0"':'')+'><i style="background:#F5B941"></i>'+q.n+'</span>'}
 var CH='<svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 var S={
-home:function(){var h='<div class="hi">Chào bạn</div><h1>Hôm nay học gì nào?</h1><div class="sub" style="margin-bottom:6px">Chọn một danh sách để bắt đầu</div>';
-L.forEach(function(l){h+='<button class="card" onclick="go(\'list\',{id:'+l.id+'})"><div class="disc" style="background:'+l.col+'">'+l.ch.length+'</div><div class="grow"><div class="t">'+esc(l.name)+'</div><div class="m">'+l.ch.length+' kênh</div></div>'+CH+'</button>'});
+home:function(){var h='<div class="hi">Chào bạn</div><h1 style="color:var(--gold);font-size:30px;margin-bottom:16px">TRẦN PHƯỚC VŨ</h1>';
+L.forEach(function(l){h+='<button class="card" onclick="go(\'list\',{id:'+l.id+'})"><div class="grow"><div class="t">'+esc(l.name)+'</div></div>'+CH+'</button>'});
 return h+'<button class="card add" onclick="go(\'newlist\')">+ Danh sách mới</button><button class="card add" onclick="go(\'backup\')">Sao lưu và khôi phục</button>'},
 newlist:function(){return '<h2>Danh sách mới</h2><div class="sub">Đặt tên dễ nhớ nhé</div><label>Tên danh sách<input id="ln" placeholder="Ví dụ: Nấu ăn"></label><div class="sp"></div><button class="btn" onclick="saveList()">Tạo danh sách</button>'},
 list:function(p){var l=gl(p.id),f=p.f||"Tất cả",ps=["Tất cả"];
